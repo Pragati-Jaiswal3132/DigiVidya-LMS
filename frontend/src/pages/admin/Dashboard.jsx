@@ -81,6 +81,27 @@ function Dashboard() {
             </ResponsiveContainer>
           </div>
         </div>
+
+        {/* Assignments & Grading Quick Links */}
+        <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-md p-6 mt-6">
+          <h2 className="text-lg font-semibold mb-4">Assignments & Grading</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {creatorCourseData?.map((course) => (
+              <div key={course._id} className="border rounded p-4 flex items-center justify-between">
+                <div>
+                  <div className="font-medium">{course.title}</div>
+                  <div className="text-sm text-gray-600">Students: {course.enrolledStudents?.length || 0}</div>
+                </div>
+                <button
+                  className="px-3 py-1 bg-black text-white rounded text-sm"
+                  onClick={() => window.location.assign(`/assignments/${course._id}`)}
+                >
+                  Manage
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )

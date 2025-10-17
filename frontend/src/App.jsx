@@ -16,6 +16,9 @@ import AddCourses from './pages/admin/AddCourses'
 import CreateCourse from './pages/admin/CreateCourse'
 import CreateLecture from './pages/admin/CreateLecture'
 import EditLecture from './pages/admin/EditLecture'
+import Assignments from './pages/admin/Assignments'
+import AssignmentSubmissions from './pages/admin/AssignmentSubmissions'
+import StudentAssignment from './pages/StudentAssignment'
 
 import getCouseData from './customHooks/getCouseData'
 import ViewCourse from './pages/ViewCourse'
@@ -26,7 +29,8 @@ import ViewLecture from './pages/ViewLecture'
 import SearchWithAi from './pages/SearchWithAi'
 import getAllReviews from './customHooks/getAllReviews'
 
-export const serverUrl = "http://localhost:8000"
+// Use relative base with Vite proxy for cookies to be first-party
+export const serverUrl = ""
 
 function App() {
   
@@ -60,6 +64,9 @@ function App() {
         <Route path='/createcourses' element={userData?.role === "educator"?<CreateCourse/>:<Navigate to={"/signup"}/>}/>
         <Route path='/createlecture/:courseId' element={userData?.role === "educator"?<CreateLecture/>:<Navigate to={"/signup"}/>}/>
         <Route path='/editlecture/:courseId/:lectureId' element={userData?.role === "educator"?<EditLecture/>:<Navigate to={"/signup"}/>}/>
+        <Route path='/assignments/:courseId' element={userData?.role === "educator"?<Assignments/>:<Navigate to={"/signup"}/>}/>
+        <Route path='/assignments/:courseId/:assignmentId' element={userData?.role === "educator"?<AssignmentSubmissions/>:<Navigate to={"/signup"}/>}/>
+        <Route path='/course/:courseId/assignments' element={userData?<StudentAssignment/>:<Navigate to={"/signup"}/>}/>
         <Route path='/forgotpassword' element={<ForgotPassword/>}/>
          </Routes>
 

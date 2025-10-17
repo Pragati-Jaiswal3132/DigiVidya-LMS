@@ -13,7 +13,10 @@ const getCurrentUser = ()=>{
                 dispatch(setUserData(result.data))
 
             } catch (error) {
-                console.log(error)
+                // 400 indicates missing/invalid token; do not spam console
+                if (error?.response?.status !== 400) {
+                    console.log(error)
+                }
                 dispatch(setUserData(null))
             }
         }
