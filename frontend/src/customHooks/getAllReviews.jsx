@@ -4,7 +4,7 @@ import { serverUrl } from '../App'
 import { setAllReview } from '../redux/reviewSlice'
 import axios from 'axios'
 
-const getAllReviews = () => {
+const GetAllReviews = () => {
 
    const dispatch = useDispatch()
   
@@ -25,4 +25,4 @@ const getAllReviews = () => {
   
 }
 
-export default getAllReviews
+export default GetAllReviews

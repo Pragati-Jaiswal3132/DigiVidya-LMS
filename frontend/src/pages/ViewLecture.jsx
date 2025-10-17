@@ -54,6 +54,16 @@ function ViewLecture() {
           <h2 className="text-lg font-semibold text-gray-800">{selectedLecture?.lectureTitle}</h2>
           
         </div>
+
+        {/* Student Assignment Dashboard CTA */}
+        <div className="mt-6 border-t pt-4">
+          <button
+            className="px-4 py-2 bg-black text-white rounded"
+            onClick={() => navigate(`/course/${courseId}/assignments`)}
+          >
+            Open Assignments & Grades
+          </button>
+        </div>
       </div>
 
       {/* Right - All Lectures + Creator Info */}

@@ -1,9 +1,9 @@
 import { useEffect } from "react"
 import { serverUrl } from "../App"
 import axios from "axios"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch} from "react-redux"
 import { setUserData } from "../redux/userSlice"
-const getCurrentUser = ()=>{
+const GetCurrentUser = ()=>{
     let dispatch = useDispatch()
    
     useEffect(()=>{
@@ -13,7 +13,10 @@ const getCurrentUser = ()=>{
                 dispatch(setUserData(result.data))
 
             } catch (error) {
-                console.log(error)
+                // 400 indicates missing/invalid token; do not spam console
+                if (error?.response?.status !== 400) {
+                    console.log(error)
+                }
                 dispatch(setUserData(null))
             }
         }
@@ -21,4 +24,4 @@ const getCurrentUser = ()=>{
     },[])
 }
 
-export default getCurrentUser
+export default GetCurrentUser
